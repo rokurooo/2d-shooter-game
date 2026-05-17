@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bjv1ttgff13pf"]
+
+[ext_resource type="Script" uid="uid://bpjsdwpj52gij" path="res://Main_Scripts/test_map.gd" id="1_h3bk6"]
+[ext_resource type="Texture2D" uid="uid://ckrmooy36m7pt" path="res://icon.svg" id="2_pd5rt"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h3bk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3bk6"]
+size = Vector2(163.85693, 20)
+
+[node name="TestMap" type="Node2D" unique_id=1606513553]
+script = ExtResource("1_h3bk6")
+
+[node name="Death_Area" type="Area2D" parent="." unique_id=139016643]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death_Area" unique_id=160576805]
+position = Vector2(0, 853)
+rotation = 3.13977
+shape = SubResource("WorldBoundaryShape2D_h3bk6")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1154572409]
+spawn_path = NodePath("../Spawn_point")
+
+[node name="Spawn_point" type="Node2D" parent="." unique_id=147080036]
+position = Vector2(394, 374)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1135480818]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1321276719]
+position = Vector2(991.10474, 738.99994)
+scale = Vector2(13.779034, 7.3047633)
+shape = SubResource("RectangleShape2D_h3bk6")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1767926318]
+position = Vector2(1043.9999, 739)
+scale = Vector2(26.086712, -1.2697648)
+texture = ExtResource("2_pd5rt")
+
+[connection signal="area_entered" from="Death_Area" to="." method="Death_area"]

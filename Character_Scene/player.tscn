@@ -1,12 +1,26 @@
 [gd_scene format=3 uid="uid://2euflwk1snyb"]
 
 [ext_resource type="Script" uid="uid://c7xc8q88sqm3l" path="res://Character_Scene/player.gd" id="1_vw3kr"]
+[ext_resource type="Texture2D" uid="uid://ckrmooy36m7pt" path="res://icon.svg" id="2_loip7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r4s3x"]
 size = Vector2(20, 28)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vw3kr"]
 
 [node name="Player" type="CharacterBody2D" unique_id=131535988]
 script = ExtResource("1_vw3kr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=684671234]
 shape = SubResource("RectangleShape2D_r4s3x")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1526043658]
+replication_config = SubResource("SceneReplicationConfig_vw3kr")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1685926740]
+offset = Vector2(0, -150)
+zoom = Vector2(1.76, 1.76)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1546201133]
+scale = Vector2(0.20134714, 0.20134714)
+texture = ExtResource("2_loip7")
